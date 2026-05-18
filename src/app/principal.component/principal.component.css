@@ -372,3 +372,81 @@
     transform: translateY(-6px);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
 }
+
+/* ================= RESPONSIVE ADJUSTMENTS ================= */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 1024px) {
+    .categorias, .productos {
+        padding: 40px 20px;
+    }
+    
+    .grid-categorias, .grid-productos {
+        grid-template-columns: repeat(2, 1fr); /* 2 columnas en tablets */
+        gap: 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 3.5rem;
+    }
+}
+
+/* Celulares (Smartphones) */
+@media (max-width: 600px) {
+    /* HERO */
+    .hero {
+        min-height: 400px;
+        text-align: center;
+    }
+
+    .hero-content {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem; /* Título más pequeño para que no se corte */
+    }
+
+    .hero-buttons {
+        flex-direction: column; /* Botones uno sobre otro */
+        gap: 12px;
+    }
+
+    .hero-buttons button {
+        width: 100%;
+    }
+
+    /* GRADIENTE HERO: Lo ajustamos para que cubra todo el fondo en móvil ya que no hay carrusel */
+    .hero .overlay {
+        background: rgba(27, 94, 111, 0.85);
+    }
+
+    /* CATEGORÍAS */
+    .grid-categorias {
+        grid-template-columns: 1fr; /* 1 columna en móvil */
+    }
+
+    .categoria-card {
+        min-height: 140px;
+    }
+
+    /* PRODUCTOS */
+    .grid-productos {
+        grid-template-columns: 1fr; /* 1 columna en móvil */
+    }
+
+    .productos .titulo {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+
+    .titulo h2 {
+        font-size: 1.8rem;
+    }
+
+    .imagen-container img {
+        height: 220px; /* Reducimos un poco la altura de la imagen */
+    }
+}
