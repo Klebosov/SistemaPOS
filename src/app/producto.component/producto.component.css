@@ -1,3 +1,7 @@
+/* ==========================================================================
+   DISEÑO ORIGINAL (ESCRITORIO) - NO MODIFICAR
+   ========================================================================== */
+
 .detalle-container{
     min-height:100vh;
     padding:40px;
@@ -100,4 +104,68 @@
     font-size:1rem;
 
     cursor:pointer;
+}
+
+/* ==========================================================================
+   ADAPTACIÓN PARA CELULARES - SÓLO SE ACTIVA EN PANTALLAS PEQUEÑAS
+   ========================================================================== */
+@media (max-width: 850px) {
+    
+    /* Reduce el espaciado exterior para que la tarjeta no se vea ahogada */
+    .detalle-container {
+        padding: 15px;
+    }
+
+    .btn-volver {
+        margin-bottom: 15px;
+        width: 100%;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+    /* CORREGIDO: La tarjeta pasa de 2 columnas horizontales a 1 columna vertical */
+    .detalle-card {
+        grid-template-columns: 1fr;
+    }
+
+    /* Reducimos el padding de la imagen para que luzca mejor */
+    .imagen-area {
+        padding: 20px;
+    }
+
+    .imagen-area img {
+        max-width: 280px; /* Evita que la foto sea gigantesca en vertical */
+    }
+
+    /* Reducimos el padding de la información para dar más espacio de lectura */
+    .info-area {
+        padding: 25px;
+    }
+
+    /* Redimensionamos las fuentes de 3rem para que quepan en el ancho del celular */
+    .info-area h1 {
+        font-size: 2rem;
+        margin-top: 15px;
+    }
+
+    /* CORREGIDO: El mini grid de datos técnicos pasa a 1 sola columna */
+    .datos-grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+    }
+
+    .dato {
+        padding: 15px;
+    }
+
+    /* Ajuste al tamaño del precio */
+    .precio-container span {
+        font-size: 2.2rem;
+    }
+
+    /* El botón de comprar se vuelve un poco más alto para facilitar el toque táctil */
+    .btn-comprar {
+        padding: 16px;
+        font-size: 1.1rem;
+    }
 }
