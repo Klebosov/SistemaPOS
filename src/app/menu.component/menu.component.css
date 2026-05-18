@@ -1,17 +1,26 @@
-/* Navbar ancho completo */
+/* ================= NAVBAR ANCHO COMPLETO ================= */
 .navbar {
   width: 100%;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  background: var(--primary);
+  background: var(--primary); /* Mantiene tu variable */
+  padding: 10px 20px;
 }
 
+/* CORREGIDO: quitamos el flex rígido global para que en móvil respete el colapso de Bootstrap */
 #navbarContenido {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   color: white;
 }
 
+/* En pantallas grandes (Escritorio), activamos el comportamiento horizontal original */
+@media (min-width: 992px) {
+  #navbarContenido {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+/* ================= ENLACES (MENU CUSTOM) ================= */
 /* Quitar estilo de botón */
 .menu-custom .nav-link {
   background: none;
@@ -40,28 +49,72 @@
   margin-right: 10px;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-  .menu-custom {
-    text-align: center;
-  }
-
-  .menu-custom .nav-item {
-    margin: 6px 0;
-  }
-}
-.image {
-  height: 60px;
-  width: 60px;
-  border-radius: 100%;
-}
-.sesion{
+/* ================= SESIÓN Y AVATAR ================= */
+.sesion {
   height: 70px;
   width: 70px;
   border-radius: 100%;
   padding: 1px;
-  
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
+
+.image {
+  height: 60px;
+  width: 60px;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+/* ================= RESPONSIVE NAVBAR (MÓVIL) ================= */
+@media (max-width: 991.98px) {
+  /* Contenedor del menú desplegado */
+  #navbarContenido {
+    padding: 20px 0 10px;
+  }
+
+  .menu-custom {
+    text-align: center;
+    margin-bottom: 20px !important;
+  }
+
+  .menu-custom .nav-item {
+    margin: 10px 0;
+  }
+
+  .menu-custom .nav-link {
+    width: 100%;
+  }
+
+  /* El buscador ahora ocupa todo el ancho */
+  .navbar form {
+    width: 100%;
+    margin-bottom: 15px !important;
+  }
+  
+  .navbar form .form-control {
+    flex-grow: 1;
+  }
+
+  /* Botón del carrito a ancho completo para fácil pulsación */
+  .navbar .btn-warning {
+    width: 100%;
+    margin-bottom: 15px;
+    padding: 12px;
+  }
+
+  /* Centrar el avatar del usuario al final del menú móvil */
+  .sesion {
+    width: 100%;
+    margin: 10px auto 0;
+    justify-content: center;
+  }
+}
+
 /* ================= CARRITO SIDEBAR GENERAL ================= */
 .carrito-sidebar {
   position: fixed;
@@ -130,10 +183,10 @@
   z-index: 1040; /* Justo debajo de la barra lateral */
 }
 
-/* Ajuste responsivo para celulares pequeños */
-@media (max-width: 400px) {
+/* Ajuste responsivo para el carrito en celulares */
+@media (max-width: 480px) {
   .carrito-sidebar {
     width: 100%;
-    right: -100%;
+    right: -100%; /* Se oculta completamente según el ancho total */
   }
 }
