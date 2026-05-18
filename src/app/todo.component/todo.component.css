@@ -1,88 +1,41 @@
 /* ==========================================================================
-   CORRECCIONES RESPONSIVAS PARA LA PANTALLA DE PRODUCTOS (POS)
+   MÓVIL: Solo se activa en celulares, mantiene intacto el diseño original en PC
    ========================================================================== */
-
-/* CORREGIDO: Modificamos el layout base para que sea flexible si hay elementos extra */
-.cuerpo-pos {
-  display: flex;
-  flex-direction: column; /* Por defecto se apila de forma vertical */
-  gap: 20px;
-  padding: 25px;
-}
-
-/* En pantallas de escritorio grandes, si decides volver a meter un lateral, se alineará bien */
-@media (min-width: 992px) {
+@media (max-width: 992px) {
+  
+  /* Cambia a 1 columna para que el espacio fantasma de 340px no rompa la pantalla */
   .cuerpo-pos {
-    display: grid;
-    grid-template-columns: 1fr; /* Cambiado a 1 sola columna expandida ya que el carrito es flotante */
-    gap: 25px;
-    padding: 25px;
-  }
-}
-
-/* Ajustes para Tablets y Celulares */
-@media (max-width: 768px) {
-  .header-azul {
-    padding: 15px 20px;
-    text-align: center;
-    justify-content: center;
-  }
-
-  .cuerpo-pos {
-    padding: 15px; /* Reducimos márgenes para aprovechar la pantalla */
+    grid-template-columns: 1fr;
+    padding: 15px;
     gap: 15px;
   }
 
-  /* BUSCADOR */
-  .buscador-container input {
-    padding: 12px 16px;
-    margin-bottom: 15px;
-    font-size: 0.95rem;
-  }
-
-  /* CATEGORÍAS: Permitimos un scroll horizontal suave si son muchas categorías */
+  /* Hace que las categorías se ajusten al ancho de la pantalla sin desbordar */
   .filtros-categorias {
     display: flex;
-    flex-wrap: nowrap; /* Evitamos que brinquen abajo amontonándose */
-    overflow-x: auto;  /* Scroll de izquierda a derecha con el dedo */
+    flex-wrap: wrap;
     gap: 8px;
     margin-bottom: 20px;
-    padding-bottom: 8px;
-    /* Ocultamos la barra de scroll nativa para estética premium */
-    scrollbar-width: none; 
-  }
-  
-  .filtros-categorias::-webkit-scrollbar {
-    display: none; 
   }
 
-  .filtros-categorias button {
-    padding: 10px 16px;
-    font-size: 0.9rem;
-    white-space: nowrap; /* Impide que el texto de la categoría se rompa en dos renglones */
-    flex-shrink: 0; /* Evita que el botón se aplaste */
+  /* Ajusta el buscador al 100% del ancho móvil */
+  .buscador-container input {
+    margin-bottom: 15px;
   }
 
-  /* GRID DE PRODUCTOS: Forzamos un mínimo de tamaño menor para pantallas pequeñas */
+  /* Reduce el tamaño mínimo del grid para que las tarjetas quepan de 2 en 2 en móviles */
   .grid-productos {
-    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
     gap: 15px;
   }
 
-  /* TARJETA DE PRODUCTO MÓVIL */
-  .tarjeta-producto {
-    border-radius: 18px;
-  }
-
+  /* Ajustes mínimos de proporciones para que la tarjeta no se vea gigante en celulares */
   .imagen-placeholder {
-    height: 160px; /* Reducimos la altura de la imagen para que quepan más en pantalla */
+    height: 150px; 
   }
 
   .info-producto {
     padding: 15px;
-    display: flex;
-    flex-direction: column;
-    flex-grow: 1;
   }
 
   .info-producto h3 {
@@ -90,35 +43,20 @@
   }
 
   .descripcion {
-    margin: 8px 0;
+    margin: 10px 0;
     font-size: 0.85rem;
-    min-height: auto; /* Quitamos altura mínima rígida en móvil */
+    min-height: auto;
   }
 
-  /* Ajustamos el precio y botón en móvil */
-  .info-producto .precio {
+  .precio {
     font-size: 1.3rem;
-    margin-bottom: 10px;
-    display: block;
   }
 
   .btn-agregar {
-    width: 100%; /* El botón ocupa todo el ancho de la tarjeta para presionar más fácil */
+    width: 100%; /* Botón completo para que sea más fácil de presionar con el dedo */
     padding: 10px;
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     text-align: center;
   }
 }
-
-/* Ajuste fino para pantallas muy pequeñas de celulares (Vertical) */
-@media (max-width: 400px) {
-  .grid-productos {
-    grid-template-columns: 1fr; /* Una sola tarjeta por fila para no amontonar datos */
-  }
-  
-  .imagen-placeholder {
-    height: 200px; /* Si es una sola columna, le devolvemos una altura cómoda */
-  }
-}
-
  
